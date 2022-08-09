@@ -2,6 +2,8 @@ import "./App.css";
 
 import { useState, useEffect } from "react";
 
+import Section from "./components/Section";
+
 const App = () => {
   const [genres, setGenres] = useState(null);
 
@@ -15,7 +17,9 @@ const App = () => {
     fetchData();
   }, []);
 
-  return <>{/* { genres && ()} */}</>;
+  console.log(genres);
+
+  return <>{genres && genres.map((genre) => <Section genre={genre} />)}</>;
 };
 
 export default App;
