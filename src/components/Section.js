@@ -27,7 +27,9 @@ const Section = ({ genre }) => {
           {movies.map((movie, index) => (
             <Card key={index} movie={movie} />
           ))}
-          <div className="more-button" onClick={fetchMovies}></div>
+          <div className="more-button" onClick={fetchMovies}>
+            <i className="fa-solid fa-angle-right"></i>
+          </div>
         </div>
       )}
     </div>
