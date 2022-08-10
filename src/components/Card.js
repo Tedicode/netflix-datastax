@@ -1,6 +1,6 @@
 const Card = ({ movie }) => {
   return (
-    <div>
+    <div className="card">
       <h4>{movie.title}</h4>
       <h4>{movie.duration}</h4>
       <video>
