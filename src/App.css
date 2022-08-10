@@ -23,12 +23,40 @@ body {
 
 video {
   width: 100%;
+  border-radius: 5px;
+}
+
+video::-webkit-media-controls {
+  display: none;
+}
+
+.movie-section:focus-within .card,
+.movie-section:focus,
+.card {
+  transform: translate(-25%);
+  z-index: 1;
+}
+
+.card:focus ~ .card,
+.card:hover ~ .card {
+  transform: translateX(25%);
+}
+
+.movie-section .card:focus,
+.movie-section .card:hover {
+  transform: scale(1.5);
+  z-index: 1;
 }
 
 .more-button {
-  width: 100px;
-  height: 100px;
-  background-color: red;
+  height: 100%;
+  display: flex;
+  padding: 40px 10px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.more-button:hover {
+  background-color: rgb(255, 255, 255, 0.5);
 }
 
 .page-end {
