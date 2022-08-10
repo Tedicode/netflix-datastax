@@ -17,8 +17,6 @@ const App = () => {
     fetchData();
   }, []);
 
-  console.log(genres);
-
   return <>{genres && genres.map((genre) => <Section genre={genre} />)}</>;
 };
 
