@@ -1,8 +1,8 @@
 import "./App.css";
-
 import { useState, useEffect } from "react";
-
 import Section from "./components/Section";
+import NavBar from "./components/NavBar";
+import HeroSection from "./components/HeroSection";
 
 const App = () => {
   const [genres, setGenres] = useState(null);
@@ -12,7 +12,7 @@ const App = () => {
   const fetchData = async () => {
     const response = await fetch("/.netlify/functions/getGenres", {
       method: "POST",
-      body: JSON.stringify({ limit: limit }),
+      body: limit,
     });
     // this will specify method is POST, and a body with the LIMIT
     // that we want to pass through the event to this serverless function
@@ -25,16 +25,22 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [, limit]);
 
   return (
     <>
-      {genres && genres.map((genre) => <Section genre={genre} />)}
+      <NavBar />
+      <HeroSection />
+
+      <div className="container">
+        {genres &&
+          genres.map((genre, index) => <Section key={index} genre={genre} />)}
+      </div>
+
       <div
         className="page-end"
         onMouseEnter={() => {
           setLimit(limit + genreIncrement);
-          fetchData();
         }}
       />
     </>

@@ -7,20 +7,17 @@ const fetch = require("node-fetch");
 exports.handler = async (event) => {
   const url = process.env.ASTRA_GRAPHQL_ENDPOINT;
 
-  const body = JSON.parse(event.body);
-  const limit = body.limit;
-  console.log("limit", limit);
-
   // take in an event
-  // parse the event body, and extract from that the 'limit'
+  // extract limit (we made it the event body)
+  const limit = event.body;
   // use the limit below in the query to make limit dynamic
-  // dont forget to JSON.stringify it when putting it into this query string
+  // don't need to JSON.stringify it when putting it into query b/c its just a num
 
   const query = `
     query getAllGenres {
       reference_list2 (
         value: { label: "genre" },
-        options: { limit: ${JSON.stringify(limit)} }
+        options: { limit: ${limit} }
       ) {
         values { value}
       }

@@ -3,7 +3,7 @@ const Card = ({ movie }) => {
     <div className="card">
       <h4>{movie.title}</h4>
       <h4>{movie.duration}</h4>
-      <video>
+      <video className="video" controls>
         <source src={movie.thumbnail} type="video/mp4" />
       </video>
     </div>

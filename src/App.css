@@ -1,9 +1,24 @@
+body {
+  background-color: #141414;
+  color: #fff;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+.container {
+  margin: 0 50px;
+}
+
 .movie-section {
   display: flex;
 }
 
 .card {
-  width: 100px;
+  width: 230px;
+  border-radius: 5px;
+  margin: 2px;
+  transition: transform 500ms;
+  position: relative;
+  display: block;
 }
 
 video {
@@ -13,7 +28,7 @@ video {
 .more-button {
   width: 100px;
   height: 100px;
-  background-color: blueviolet;
+  background-color: red;
 }
 
 .page-end {
