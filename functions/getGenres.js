@@ -4,13 +4,23 @@ const fetch = require("node-fetch");
 // OR, is netlify not injecting the .env secrets?
 // ( use the command netlify dev to start the server instead of default run command)
 
-exports.handler = async () => {
+exports.handler = async (event) => {
   const url = process.env.ASTRA_GRAPHQL_ENDPOINT;
+
+  const body = JSON.parse(event.body);
+  const limit = body.limit;
+  console.log("limit", limit);
+
+  // take in an event
+  // parse the event body, and extract from that the 'limit'
+  // use the limit below in the query to make limit dynamic
+  // dont forget to JSON.stringify it when putting it into this query string
 
   const query = `
     query getAllGenres {
       reference_list2 (
-        value: { label: "genre" }
+        value: { label: "genre" },
+        options: { limit: ${JSON.stringify(limit)} }
       ) {
         values { value}
       }
